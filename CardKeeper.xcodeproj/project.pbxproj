@@ -20,6 +20,7 @@
 		1814DAE72A5C0F06004FEBAB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814DAE62A5C0F06004FEBAB /* UIColor+Extension.swift */; };
 		1814DAE92A5C10C4004FEBAB /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814DAE82A5C10C4004FEBAB /* CardCell.swift */; };
 		1814DAEB2A5C1678004FEBAB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814DAEA2A5C1678004FEBAB /* String+Extension.swift */; };
+		1814DAEF2A5C23BA004FEBAB /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814DAEE2A5C23BA004FEBAB /* CardDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		1814DAE62A5C0F06004FEBAB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1814DAE82A5C10C4004FEBAB /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		1814DAEA2A5C1678004FEBAB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1814DAEE2A5C23BA004FEBAB /* CardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				1805BC8D2A5BFF34007A9AF3 /* CardsList */,
+				1814DAEC2A5C2380004FEBAB /* CardsDetails */,
 			);
 			path = UserStories;
 			sourceTree = "<group>";
@@ -150,6 +153,22 @@
 				1814DAE62A5C0F06004FEBAB /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1814DAEC2A5C2380004FEBAB /* CardsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1814DAED2A5C2397004FEBAB /* Controller */,
+			);
+			path = CardsDetails;
+			sourceTree = "<group>";
+		};
+		1814DAED2A5C2397004FEBAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1814DAEE2A5C23BA004FEBAB /* CardDetailsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1814DAE72A5C0F06004FEBAB /* UIColor+Extension.swift in Sources */,
+				1814DAEF2A5C23BA004FEBAB /* CardDetailsViewController.swift in Sources */,
 				1814DAEB2A5C1678004FEBAB /* String+Extension.swift in Sources */,
 				1805BC922A5C0064007A9AF3 /* CardsListViewController.swift in Sources */,
 				1805BC762A5BFC90007A9AF3 /* AppDelegate.swift in Sources */,

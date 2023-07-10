@@ -85,6 +85,13 @@ extension CardsListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let card = cards[indexPath.row]
+        let cardDetailsViewController = CardDetailsViewController(card: card)
+        navigationController?.pushViewController(cardDetailsViewController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Видалити") { [weak self] action, view, completionHandler in
             self?.cards.remove(at: indexPath.row)

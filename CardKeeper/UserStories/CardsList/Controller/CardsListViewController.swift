@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "CardCell"
-
 class CardsListViewController: UIViewController {
     
     //MARK: - Properties
@@ -20,6 +18,8 @@ class CardsListViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
+    
+    private let reuseIdentifier = "CardCell"
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -54,7 +54,16 @@ class CardsListViewController: UIViewController {
     
     //MARK: - Selectors
     @objc private func addCard() {
-        cards.insert(Card(type: .visa, number: "1234123412341234"), at: 0)
+        guard let randomCardType = CardType.allCases.randomElement() else {
+            return
+        }
+        
+        let randomCardNumber = (1...16)
+            .map { _ in Int.random(in: 0...9) }
+            .map { String($0) }
+            .joined()
+        
+        cards.insert(Card(type: randomCardType, number: randomCardNumber), at: 0)
         
         saveCards()
         
@@ -74,5 +83,20 @@ extension CardsListViewController: UITableViewDataSource, UITableViewDelegate {
         let card = cards[indexPath.row]
         cell.configure(with: card)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Видалити") { [weak self] action, view, completionHandler in
+            self?.cards.remove(at: indexPath.row)
+            self?.saveCards()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage.AppImages.trash
+        
+        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction])
+        swipeConfig.performsFirstActionWithFullSwipe = false
+        
+        return swipeConfig
     }
 }

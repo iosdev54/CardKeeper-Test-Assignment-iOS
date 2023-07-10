@@ -16,7 +16,7 @@ struct Card: Codable {
     init(type: CardType, number: String) {
         self.type = type
         self.number = number
-        self.maskedNumber = "1111111111111111"
+        self.maskedNumber = number.formattedCardNumber()
         self.dateAdded = Date()
     }
 }

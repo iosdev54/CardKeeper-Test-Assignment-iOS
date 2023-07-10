@@ -14,9 +14,9 @@ enum CardType: String, CaseIterable, Codable {
     var logo: UIImage {
         switch self {
         case .visa:
-            return UIImage.AppImages.visa.unwrapImage
+            return UIImage.AppImages.visa
         case .mastercard:
-            return UIImage.AppImages.mastercard.unwrapImage
+            return UIImage.AppImages.mastercard
         }
     }
     

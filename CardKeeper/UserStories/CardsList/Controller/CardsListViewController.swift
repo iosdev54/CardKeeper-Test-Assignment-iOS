@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardsListViewController: UIViewController {
+final class CardsListViewController: UIViewController {
     
     //MARK: - Properties
     private var cards: [Card] = [] {
@@ -97,9 +97,7 @@ class CardsListViewController: UIViewController {
             .joined()
         
         cards.insert(Card(type: randomCardType, number: randomCardNumber), at: 0)
-        
         saveCards()
-        
         tableView.reloadData()
     }
 }
@@ -128,13 +126,16 @@ extension CardsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !cards.isEmpty else {
+            return
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if !cards.isEmpty {
-            let card = cards[indexPath.row]
-            let cardDetailsViewController = CardDetailsViewController(card: card)
-            navigationController?.pushViewController(cardDetailsViewController, animated: true)
-        }
+        let card = cards[indexPath.row]
+        let cardDetailsViewController = CardDetailsViewController(card: card)
+        navigationController?.pushViewController(cardDetailsViewController, animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -142,11 +143,11 @@ extension CardsListViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "Видалити") { [weak self] action, view, completionHandler in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, completionHandler in
             self?.cards.remove(at: indexPath.row)
             self?.saveCards()
             
-            if self?.cards.isEmpty ?? true {
+            if self?.cards.isEmpty == true {
                 tableView.reloadData()
             } else {
                 tableView.deleteRows(at: [indexPath], with: .automatic)
